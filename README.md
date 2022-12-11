@@ -1,3 +1,6 @@
+News Management system
 
+Based on ReactJs
 
-Readme
+By: Yongjun Wang
+Email: to_wyj@126.com
