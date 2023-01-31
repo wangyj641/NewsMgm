@@ -39,7 +39,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/helper-compilation-targets": "^7.20.0",
     "http-proxy-middleware": "^1.0.6",
     "react-router-dom": "^5.2.0"
   }

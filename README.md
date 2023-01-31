@@ -7,7 +7,7 @@ json-server --watch .\db.json --port 5000
 npm i  
 npm start  
 
-### Add the token for app
+### Add the token for app login
 application -> local storage -> add key: token, set value  
 
 ### Restart the app
