@@ -68,9 +68,11 @@ function SideMenu(props) {
 
   const {role:{rights}} = JSON.parse(localStorage.getItem("token"))
 
+  // set user access right for view， if user is a super user, it wil show all information
   const checkPagePermission = (item)=>{
     return item.pagepermisson && rights.includes(item.key)
   }
+  
   const renderMenu = (menuList)=>{
     return menuList.map(item=>{
       if(item.children?.length>0 && checkPagePermission(item)){
