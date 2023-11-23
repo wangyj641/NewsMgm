@@ -16,6 +16,7 @@ export default function Login(props) {
                 message.error("Wrong username or password")
             }else{
                 localStorage.setItem("token", JSON.stringify(res.data[0]))
+                console.log(JSON.stringify(res.data[0]))
                 props.history.push("/")
             }
         })

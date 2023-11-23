@@ -10,7 +10,7 @@
       "roleId": 1
     },
     {
-      "username": "诸葛山珍",
+      "username": "Billy",
       "password": "123",
       "roleState": true,
       "default": false,
@@ -19,7 +19,7 @@
       "id": 4
     },
     {
-      "username": "西门吹灯",
+      "username": "Kelly",
       "password": "123",
       "roleState": true,
       "default": false,

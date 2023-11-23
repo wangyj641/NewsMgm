@@ -15,10 +15,12 @@ function TopHeader(props) {
         setCollapsed(!collapsed)
     }
 
+    const {role: {roleName}, username} = JSON.parse(localStorage.getItem("token"))
+
     const menu = (
         <Menu>
             <Menu.Item>
-                超级管理员
+                {roleName}
             </Menu.Item>
             <Menu.Item danger onClick={()=>{
                 localStorage.removeItem("token")
@@ -35,7 +37,7 @@ function TopHeader(props) {
             }
 
             <div style={{ float: "right" }}>
-                <span>欢迎admin回来</span>
+                <span>欢迎{username}回来</span>
                 <Dropdown overlay={menu}>
                     <Avatar size="large" icon={<UserOutlined />} />
                 </Dropdown>
