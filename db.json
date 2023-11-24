@@ -71,6 +71,33 @@
       "region": "亚洲",
       "roleId": 3,
       "id": 8
+    },
+    {
+      "username": "wang",
+      "password": "123",
+      "region": "亚洲",
+      "roleId": 3,
+      "roleState": true,
+      "default": false,
+      "id": 9
+    },
+    {
+      "username": "wang2",
+      "password": "123",
+      "region": "南极洲",
+      "roleId": 2,
+      "roleState": true,
+      "default": false,
+      "id": 10
+    },
+    {
+      "username": "wang3",
+      "password": "123",
+      "region": "南极洲",
+      "roleId": 3,
+      "roleState": true,
+      "default": false,
+      "id": 11
     }
   ],
   "roles": [
