@@ -10,7 +10,25 @@
       "roleId": 1
     },
     {
-      "username": "Billy",
+      "username": "Mike",
+      "password": "123",
+      "roleState": true,
+      "default": false,
+      "region": "亚洲",
+      "roleId": 2,
+      "id": 2
+    },
+    {
+      "username": "Jimmy",
+      "password": "123",
+      "roleState": true,
+      "default": false,
+      "region": "南极洲",
+      "roleId": 2,
+      "id": 3
+    },
+    {
+      "username": "Steven",
       "password": "123",
       "roleState": true,
       "default": false,
@@ -28,7 +46,16 @@
       "id": 5
     },
     {
-      "username": "司马海味gg",
+      "username": "Susan",
+      "password": "123",
+      "roleState": true,
+      "default": false,
+      "region": "南极洲",
+      "roleId": 3,
+      "id": 6
+    },
+    {
+      "username": "Cathy",
       "password": "123",
       "roleState": true,
       "default": false,
@@ -37,7 +64,7 @@
       "id": 7
     },
     {
-      "username": "咕噜墩子",
+      "username": "Peter",
       "password": "123",
       "roleState": true,
       "default": false,
@@ -79,6 +106,33 @@
         "/publish-manage/sunset",
         "/user-manage",
         "/home"
+      ]
+    },
+    {
+      "id": 2,
+      "roleName": "区域管理员",
+      "roleType": 2,
+      "rights": [
+        "/home",
+        "/user-manage",
+        "/user-manage/add",
+        "/user-manage/delete",
+        "/user-manage/update",
+        "/user-manage/list",
+        "/news-manage",
+        "/news-manage/list",
+        "/news-manage/add",
+        "/news-manage/update/:id",
+        "/news-manage/preview/:id",
+        "/news-manage/draft",
+        "/news-manage/category",
+        "/audit-manage",
+        "/audit-manage/audit",
+        "/audit-manage/list",
+        "/publish-manage",
+        "/publish-manage/unpublished",
+        "/publish-manage/published",
+        "/publish-manage/sunset"
       ]
     },
     {
@@ -544,6 +598,20 @@
       "publishTime": 1617527476474
     },
     {
+      "title": "teichui-1111",
+      "categoryId": 1,
+      "content": "<p>11111111111</p>\n",
+      "region": "亚洲",
+      "author": "铁锤",
+      "roleId": 2,
+      "auditState": 3,
+      "publishState": 0,
+      "createTime": 1617518218962,
+      "star": 0,
+      "view": 0,
+      "id": 14
+    },
+    {
       "title": "司马海味-111",
       "categoryId": 2,
       "content": "<p>dwda</p>\n",
@@ -585,6 +653,21 @@
       "view": 0,
       "id": 17,
       "publishTime": 1618035533728
+    },
+    {
+      "title": "teichui-1111",
+      "categoryId": 1,
+      "content": "<p>111</p>\n",
+      "region": "亚洲",
+      "author": "铁锤",
+      "roleId": 2,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1618039847910,
+      "star": 0,
+      "view": 2,
+      "id": 18,
+      "publishTime": 1618039853615
     }
   ]
 }
