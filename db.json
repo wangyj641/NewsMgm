@@ -98,6 +98,15 @@
       "roleState": true,
       "default": false,
       "id": 11
+    },
+    {
+      "username": "wang3",
+      "password": "123",
+      "region": "欧洲",
+      "roleId": 2,
+      "roleState": true,
+      "default": false,
+      "id": 12
     }
   ],
   "roles": [
