@@ -100,13 +100,22 @@
       "id": 11
     },
     {
-      "username": "wang3",
+      "username": "wang4",
       "password": "123",
       "region": "欧洲",
       "roleId": 2,
       "roleState": true,
       "default": false,
       "id": 12
+    },
+    {
+      "username": "wang5",
+      "password": "123",
+      "region": "欧洲",
+      "roleId": 3,
+      "roleState": true,
+      "default": false,
+      "id": 13
     }
   ],
   "roles": [
