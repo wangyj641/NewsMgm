@@ -27,7 +27,7 @@ export default function UserList() {
     
 
     useEffect(() => {
-        axios.get("http://localhost:5000/users?_expand=role").then(res => {
+        axios.get("/users?_expand=role").then(res => {
             const list = res.data
             setdataSource(roleObj[roleId]==="superadmin"?list:[
             ...list.filter(item=>item.username===username),
@@ -37,14 +37,14 @@ export default function UserList() {
     }, [])
 
     useEffect(() => {
-        axios.get("http://localhost:5000/regions").then(res => {
+        axios.get("/regions").then(res => {
             const list = res.data
             setregionList(list)
         })
     }, [])
 
     useEffect(() => {
-        axios.get("http://localhost:5000/roles").then(res => {
+        axios.get("/roles").then(res => {
             const list = res.data
             setroleList(list)
         })
@@ -128,7 +128,7 @@ export default function UserList() {
         item.roleState = !item.roleState
         setdataSource([...dataSource])
 
-        axios.patch(`http://localhost:5000/users/${item.id}`,{
+        axios.patch(`/users/${item.id}`,{
             roleState:item.roleState
         })
     }
@@ -155,7 +155,7 @@ export default function UserList() {
 
         setdataSource(dataSource.filter(data=>data.id!==item.id))
 
-        axios.delete(`http://localhost:5000/users/${item.id}`)
+        axios.delete(`/users/${item.id}`)
     }
 
     const addFormOK = () => {
@@ -166,7 +166,7 @@ export default function UserList() {
 
             addForm.current.resetFields()
             //post到后端，生成id，再设置 datasource, 方便后面的删除和更新
-            axios.post(`http://localhost:5000/users`, {
+            axios.post(`/users`, {
                 ...value,
                 "roleState": true,
                 "default": false,
@@ -199,7 +199,7 @@ export default function UserList() {
             }))
             setisUpdateDisabled(!isUpdateDisabled)
 
-            axios.patch(`http://localhost:5000/users/${current.id}`,value)
+            axios.patch(`/users/${current.id}`,value)
         })
     }
 

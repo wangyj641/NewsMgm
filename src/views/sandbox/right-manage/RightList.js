@@ -7,7 +7,7 @@ export default function RightList() {
     const [dataSource, setdataSource] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:5000/rights?_embed=children").then(res => {
+        axios.get("/rights?_embed=children").then(res => {
             const list = res.data
 
             list.forEach(item => {
@@ -60,11 +60,11 @@ export default function RightList() {
         setdataSource([...dataSource])
 
         if(item.grade===1){
-            axios.patch(`http://localhost:5000/rights/${item.id}`,{
+            axios.patch(`/rights/${item.id}`,{
                 pagepermisson:item.pagepermisson
             })
         }else{
-            axios.patch(`http://localhost:5000/children/${item.id}`,{
+            axios.patch(`/children/${item.id}`,{
                 pagepermisson:item.pagepermisson
             })
         }
@@ -91,12 +91,12 @@ export default function RightList() {
         // 当前页面同步状态 + 后端同步
         if (item.grade === 1) {
             setdataSource(dataSource.filter(data => data.id !== item.id))
-            axios.delete(`http://localhost:5000/rights/${item.id}`)
+            axios.delete(`/rights/${item.id}`)
         }else{
             let list = dataSource.filter(data=>data.id===item.rightId)
             list[0].children = list[0].children.filter(data=>data.id!==item.id)
             setdataSource([...dataSource])
-            axios.delete(`http://localhost:5000/children/${item.id}`)
+            axios.delete(`/children/${item.id}`)
         }
     }
 
