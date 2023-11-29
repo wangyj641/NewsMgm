@@ -1,17 +1,17 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Button, PageHeader, Steps } from 'antd'
+import style from './News.module.css'
 
 const { Step } = Steps
-const description = 'This is a description.';
 
 export default function NewsAdd() {
   const [current, setCurrent] = useState(0)
 
-  const handleNext = () =>{
+  const handleNext = () => {
     setCurrent(current + 1)
   }
 
-  const handlePrevious = () =>{
+  const handlePrevious = () => {
     setCurrent(current - 1)
   }
 
@@ -28,16 +28,22 @@ export default function NewsAdd() {
         <Step title="Submit" description="Save draft and submit" />
       </Steps>
 
-      <div>111
+      <div className={current === 0 ? '' : style.active}>1111
+        <input type="text" />
       </div>
 
-      <div>222</div>
-      <div>333</div>
+      <div className={current === 1 ? '' : style.active}>2222
+        <input type="text" />
+      </div>
 
-      <div style={{marginTop: "50px"}}>
-      
+      <div className={current === 2 ? '' : style.active}>3333
+        <input type="text" />
+      </div>
+
+      <div style={{ marginTop: "50px" }}>
+
         {
-          current ===2 && <span>
+          current === 2 && <span>
             <Button type="primary">Save to draft</Button>
             <Button>Submit to audit</Button>
           </span>
