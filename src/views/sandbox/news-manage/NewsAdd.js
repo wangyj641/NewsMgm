@@ -1,32 +1,72 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Button, PageHeader, Steps, Form, Input, Select } from 'antd'
+import { Button, PageHeader, Steps, Form, Input, Select, message, notification } from 'antd'
 import style from './News.module.css'
 import axios from 'axios'
+import NewsEditor from '../../../components/news-manage/NewsEditor'
+
 
 const { Option } = Select
 
-export default function NewsAdd() {
+export default function NewsAdd(props) {
   const [current, setCurrent] = useState(0)
   const [categoryList, setCategoryList] = useState([])
 
+  const [formInfo, setFormInfo] = useState({})
+  const [content, setContent] = useState({})
+
   const NewsForm = useRef(null)
+
+  const User = JSON.parse(localStorage.getItem("token"))
 
   const handleNext = () => {
     if (current === 0) {
       NewsForm.current.validateFields().then(res => {
         console.log(res)
+        setFormInfo(res)
         setCurrent(current + 1)
       }).catch(error => {
         console.log(error)
       })
     }
     else {
-      setCurrent(current + 1)
+      console.log(formInfo)
+      console.log(content)
+      if (content === "" || content.trim === "<p></p>") {
+        console.log(0)
+        message.error("Content is empty, please input the text")
+      } else {
+        console.log(1)
+        setCurrent(current + 1)
+      }
     }
   }
 
   const handlePrevious = () => {
     setCurrent(current - 1)
+  }
+
+  const handleSave = (auditState) => {
+    axios.post("/news", {
+     ...formInfo,
+      "content": content,
+      "region": User.region,
+      "author": User.username,
+      "roleId": User.roleId,
+      "auditState": auditState,
+      "publishState": 0,
+      "createTime": Date.now,
+      "star": 0,
+      "view": 0,
+    }).then(res=>{
+      props.history.push(auditState===0?'news-manage/draft':'audit-manage/list')
+
+      notification.info({
+        message: "Note",
+        description: `You can check your ${auditState===0?'draft':'audit'} box`,
+        placement: "bottomRight",
+      })
+
+    })
   }
 
   useEffect(() => {
@@ -85,8 +125,8 @@ export default function NewsAdd() {
 
         </div>
 
-        <div className={current === 1 ? '' : style.active}>Class
-          <input type="text" />
+        <div className={current === 1 ? '' : style.active}>
+          <NewsEditor getContent={(value) => { setContent(value) }}></NewsEditor>
         </div>
 
         <div className={current === 2 ? '' : style.active}>Content
@@ -96,8 +136,8 @@ export default function NewsAdd() {
 
       {
         current === 2 && <span>
-          <Button type="primary">Save to draft</Button>
-          <Button>Submit to audit</Button>
+          <Button type="primary" onClick={() => handleSave(0)}>Save to draft</Button>
+          <Button onClick={() => handleSave(1)}>Submit to audit</Button>
         </span>
       }
       {
