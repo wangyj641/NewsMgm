@@ -4,13 +4,11 @@ import style from './News.module.css'
 import axios from 'axios'
 import NewsEditor from '../../../components/news-manage/NewsEditor'
 
-
 const { Option } = Select
 
 export default function NewsAdd(props) {
   const [current, setCurrent] = useState(0)
   const [categoryList, setCategoryList] = useState([])
-
   const [formInfo, setFormInfo] = useState({})
   const [content, setContent] = useState({})
 
