@@ -47,9 +47,9 @@ export default function NewsAdd(props) {
 
   const handleSave = (auditState) => {
     axios.post("/news", {
-     ...formInfo,
+      ...formInfo,
       "content": content,
-      "region": User.region,
+      "region": User.region ? User.region : "Global",
       "author": User.username,
       "roleId": User.roleId,
       "auditState": auditState,
@@ -57,12 +57,12 @@ export default function NewsAdd(props) {
       "createTime": Date.now,
       "star": 0,
       "view": 0,
-    }).then(res=>{
-      props.history.push(auditState===0?'news-manage/draft':'audit-manage/list')
+    }).then(res => {
+      props.history.push(auditState === 0 ? '/news-manage/draft' : '/audit-manage/list')
 
       notification.info({
         message: "Note",
-        description: `You can check your ${auditState===0?'draft':'audit'} box`,
+        description: `You can check your ${auditState === 0 ? 'draft' : 'audit'} box`,
         placement: "bottomRight",
       })
 
@@ -129,8 +129,7 @@ export default function NewsAdd(props) {
           <NewsEditor getContent={(value) => { setContent(value) }}></NewsEditor>
         </div>
 
-        <div className={current === 2 ? '' : style.active}>Content
-          <input type="text" />
+        <div className={current === 2 ? '' : style.active}>
         </div>
       </div>
 
