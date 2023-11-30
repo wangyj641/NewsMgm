@@ -15,6 +15,7 @@ import Audit from '../../views/sandbox/audit-manage/Audit'
 import AuditList from '../../views/sandbox/audit-manage/AuditList'
 import axios from 'axios'
 import NewsPreview from '../../views/sandbox/news-manage/NewsPreview'
+import NewsUpdate from '../../views/sandbox/news-manage/NewsUpdate'
 
 const LocalRouterMap = {
   "/home": Home,
@@ -25,6 +26,7 @@ const LocalRouterMap = {
   "/news-manage/draft": NewsDraft,
   "/news-manage/category": NewsCategory,
   "/news-manage/preview/:id": NewsPreview,
+  "/news-manage/update/:id": NewsUpdate,
   "/audit-manage/audit": Audit,
   "/audit-manage/list": AuditList,
   "/publish-manage/unpublished": Unpublished,

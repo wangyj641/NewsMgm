@@ -4,7 +4,7 @@ import axios from 'axios'
 import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined, UploadOutlined } from '@ant-design/icons'
 const { confirm } = Modal
 
-export default function NewsDraft() {
+export default function NewsDraft(props) {
   const [dataSource, setDataSource] = useState([])
   const { username } = JSON.parse(localStorage.getItem("token"))
 
@@ -48,8 +48,8 @@ export default function NewsDraft() {
       render: (item) => {
         return <div>
           <Button danger shape="circle" icon={<DeleteOutlined />} onClick={() => confirmMethod(item)} />
-          <Button shape="circle" icon={<EditOutlined />} disabled={item.pagepermisson === undefined} />
-          <Button type="primary" shape="circle" icon={<UploadOutlined />} disabled={item.pagepermisson === undefined} />
+          <Button shape="circle" icon={<EditOutlined />} onClick={() => { props.history.push(`/news-manage/update/${item.id}`) }} />
+          <Button type="primary" shape="circle" icon={<UploadOutlined />} />
         </div>
       }
     }
