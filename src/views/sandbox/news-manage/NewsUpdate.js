@@ -11,22 +11,7 @@ export default function NewsUpdate(props) {
     const [categoryList, setCategoryList] = useState([])
     const [formInfo, setFormInfo] = useState({})
     const [content, setContent] = useState({})
-
-    const NewsForm = useRef(null)
-
-    const User = JSON.parse(localStorage.getItem("token"))
-
-    const [newsInfo, setNewsInfo] = useState(null)
-
-
-    useEffect(() => {
-        console.log(props.match.params.id)
-        axios.get(`/news/${props.match.params.id}?_expand=category&_expand=role`).then(
-            res => {
-                setNewsInfo(res.data)
-            }
-        )
-    }, [props.match.params.id])
+    const [newsInfo, setNewsInfo] = useState({})
 
     const handleNext = () => {
         if (current === 0) {
@@ -42,10 +27,8 @@ export default function NewsUpdate(props) {
             console.log(formInfo)
             console.log(content)
             if (content === "" || content.trim === "<p></p>") {
-                console.log(0)
                 message.error("Content is empty, please input the text")
             } else {
-                console.log(1)
                 setCurrent(current + 1)
             }
         }
@@ -59,9 +42,6 @@ export default function NewsUpdate(props) {
         axios.post("/news", {
             ...formInfo,
             "content": content,
-            "region": User.region ? User.region : "Global",
-            "author": User.username,
-            "roleId": User.roleId,
             "auditState": auditState,
             "publishState": 0,
             "createTime": Date.now(),
@@ -75,9 +55,10 @@ export default function NewsUpdate(props) {
                 description: `You can check your ${auditState === 0 ? 'draft' : 'audit'} box`,
                 placement: "bottomRight",
             })
-
         })
     }
+
+    const NewsForm = useRef(null)
 
     useEffect(() => {
         axios.get("/categories").then(res => {
@@ -86,12 +67,30 @@ export default function NewsUpdate(props) {
         })
     }, [])
 
+    useEffect(() => {
+        //console.log(props.match.params.id)
+        axios.get(`/news/${props.match.params.id}?_expand=category&_expand=role`).then(
+            res => {
+                console.log(res.data)
+                //let { title, categoryId, content } = res.data
+                //console.log(title, categoryId, content)
+                //console.log(NewsForm.current)
+                //NewsForm.current.setFieldsValue({
+                //    title,
+                //    categoryId
+                //})
+                setNewsInfo(res.data)
+                //setContent(content)
+            }
+        )
+    }, [props.match.params.id])
+
     return (
         <div>
             <PageHeader
                 className="site-page-header"
                 title="Update a News"
-                onBack={()=>props.history.goBack()}
+                onBack={() => props.history.goBack()}
             />
 
             <Steps current={current}>
@@ -113,14 +112,18 @@ export default function NewsUpdate(props) {
                         <Form.Item
                             label="Title"
                             name="title"
+
                             rules={[{ required: true, message: 'Please input your title!' }]}
                         >
-                            <Input />
+                            <Input initialValue={newsInfo.title}
+                            />
                         </Form.Item>
 
                         <Form.Item
                             label="Category"
                             name="categoryId"
+
+                            initialValue="2"
                             rules={[{ required: true, message: 'Please input your category!' }]}
                         >
 
@@ -137,7 +140,7 @@ export default function NewsUpdate(props) {
                 </div>
 
                 <div className={current === 1 ? '' : style.active}>
-                    <NewsEditor getContent={(value) => { setContent(value) }}></NewsEditor>
+                    <NewsEditor getContent={(value) => { setContent(value) }} content={newsInfo.content}></NewsEditor>
                 </div>
 
                 <div className={current === 2 ? '' : style.active}>
