@@ -72,15 +72,15 @@ export default function NewsUpdate(props) {
         axios.get(`/news/${props.match.params.id}?_expand=category&_expand=role`).then(
             res => {
                 console.log(res.data)
-                //let { title, categoryId, content } = res.data
-                //console.log(title, categoryId, content)
-                //console.log(NewsForm.current)
-                //NewsForm.current.setFieldsValue({
-                //    title,
-                //    categoryId
-                //})
-                setNewsInfo(res.data)
+                let { title, categoryId, content } = res.data
+                console.log(title, categoryId, content)
+                console.log(NewsForm.current)
+                NewsForm.current.setFieldsValue({
+                    title,
+                    categoryId
+                })
                 //setContent(content)
+                setNewsInfo(res.data)
             }
         )
     }, [props.match.params.id])
@@ -112,21 +112,16 @@ export default function NewsUpdate(props) {
                         <Form.Item
                             label="Title"
                             name="title"
-
                             rules={[{ required: true, message: 'Please input your title!' }]}
                         >
-                            <Input initialValue={newsInfo.title}
-                            />
+                            <Input />
                         </Form.Item>
 
                         <Form.Item
                             label="Category"
                             name="categoryId"
-
-                            initialValue="2"
                             rules={[{ required: true, message: 'Please input your category!' }]}
                         >
-
                             <Select>
                                 {
                                     categoryList.map(item =>
@@ -160,6 +155,6 @@ export default function NewsUpdate(props) {
                 current > 0 && <Button onClick={handlePrevious}>Previous step</Button>
             }
 
-        </div>
+        </div >
     )
 }

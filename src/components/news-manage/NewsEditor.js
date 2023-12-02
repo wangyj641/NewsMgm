@@ -8,18 +8,16 @@ import htmlToDraft from 'html-to-draftjs'
 export default function NewsEditor(props) {
     useEffect(() => {
         const html = props.content;
-        if (html) {
-            console.log(html)
-            const contentBlock = htmlToDraft(html);
-            if (contentBlock) {
-                console.log(contentBlock);
-                const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
-                const editorState = EditorState.createWithContent(contentState);
-                setEditorState(editorState)
-            }
+        if (html === undefined || html === null) return
 
+        console.log(html)
+        const contentBlock = htmlToDraft(html);
+        if (contentBlock) {
+            console.log(contentBlock);
+            const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+            const editorState = EditorState.createWithContent(contentState);
+            setEditorState(editorState)
         }
-
     }, [props.content])
 
     const [editorState, setEditorState] = useState("")
