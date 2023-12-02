@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Button, Table, Tag, Modal,Popover, Switch} from 'antd'
 import axios from 'axios'
 import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
+
 const { confirm } = Modal
+
 export default function RightList() {
     const [dataSource, setdataSource] = useState([])
 
