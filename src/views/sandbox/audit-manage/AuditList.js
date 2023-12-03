@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Button, Table, Tag, notification } from 'antd'
 
-const { username } = JSON.parse(localStorage.getItem("token"))
-
 export default function AuditList(props) {
   const [dataSource, setdataSource] = useState([])
+  const { username } = JSON.parse(localStorage.getItem("token"))
 
   useEffect(() => {
     axios(`/news?author=${username}&auditState_ne=0&publishState_lte=1&_expand=category`).then(
@@ -15,7 +14,7 @@ export default function AuditList(props) {
 
       }
     )
-  }, [])
+  }, [username])
 
   const columns = [
     {
