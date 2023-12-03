@@ -17,7 +17,7 @@ export default function UserList() {
     const addForm = useRef(null)
     const updateForm = useRef(null)
 
-    const {roleId, region, username} = JSON.parse(localStorage.getItem("token"))
+    const { roleId, region, username } = JSON.parse(localStorage.getItem("token"))
 
     const roleObj = {
         "1": "superadmin",
@@ -25,16 +25,15 @@ export default function UserList() {
         "3": "editor"
     }
     
-
     useEffect(() => {
         axios.get("/users?_expand=role").then(res => {
             const list = res.data
-            setdataSource(roleObj[roleId]==="superadmin"?list:[
-            ...list.filter(item=>item.username===username),
-            ...list.filter(item=>item.region===region && roleObj[item.roleId]==="editor")]
+            setdataSource(roleObj[roleId] === "superadmin" ? list : [
+                ...list.filter(item => item.username === username),
+                ...list.filter(item => item.region === region && roleObj[item.roleId] === "editor")]
             )
         })
-    }, [])
+    }, [roleId, username, region])
 
     useEffect(() => {
         axios.get("/regions").then(res => {
@@ -55,24 +54,24 @@ export default function UserList() {
             title: '区域',
             dataIndex: 'region',
             filters: [
-                ...regionList.map(item=>({
-                    text:item.title,
-                    value:item.value
+                ...regionList.map(item => ({
+                    text: item.title,
+                    value: item.value
                 })),
                 {
-                    text:"全球",
-                    value:"全球"
-                }    
+                    text: "全球",
+                    value: "全球"
+                }
 
             ],
 
-            onFilter:(value,item)=>{
-                if(value==="全球"){
-                    return item.region===""
+            onFilter: (value, item) => {
+                if (value === "全球") {
+                    return item.region === ""
                 }
-                return item.region===value
+                return item.region === value
             },
-          
+
             render: (region) => {
                 return <b>{region === "" ? '全球' : region}</b>
             }
@@ -92,7 +91,7 @@ export default function UserList() {
             title: "用户状态",
             dataIndex: 'roleState',
             render: (roleState, item) => {
-                return <Switch checked={roleState} disabled={item.default} onChange={()=>handleChange(item)}></Switch>
+                return <Switch checked={roleState} disabled={item.default} onChange={() => handleChange(item)}></Switch>
             }
         },
         {
@@ -101,35 +100,35 @@ export default function UserList() {
                 return <div>
                     <Button danger shape="circle" icon={<DeleteOutlined />} onClick={() => confirmMethod(item)} disabled={item.default} />
 
-                    <Button type="primary" shape="circle" icon={<EditOutlined />} disabled={item.default} onClick={()=>handleUpdate(item)}/>
+                    <Button type="primary" shape="circle" icon={<EditOutlined />} disabled={item.default} onClick={() => handleUpdate(item)} />
                 </div>
             }
         }
     ];
 
-    const handleUpdate = (item)=>{
-        setTimeout(()=>{
+    const handleUpdate = (item) => {
+        setTimeout(() => {
             setisUpdateVisible(true)
-            if(item.roleId===1){
+            if (item.roleId === 1) {
                 //禁用
                 setisUpdateDisabled(true)
-            }else{
+            } else {
                 //取消禁用
                 setisUpdateDisabled(false)
             }
             updateForm.current.setFieldsValue(item)
-        },0)
+        }, 0)
 
         setcurrent(item)
     }
 
-    const handleChange = (item)=>{
+    const handleChange = (item) => {
         // console.log(item)
         item.roleState = !item.roleState
         setdataSource([...dataSource])
 
-        axios.patch(`/users/${item.id}`,{
-            roleState:item.roleState
+        axios.patch(`/users/${item.id}`, {
+            roleState: item.roleState
         })
     }
 
@@ -153,7 +152,7 @@ export default function UserList() {
         // console.log(item)
         // 当前页面同步状态 + 后端同步
 
-        setdataSource(dataSource.filter(data=>data.id!==item.id))
+        setdataSource(dataSource.filter(data => data.id !== item.id))
 
         axios.delete(`/users/${item.id}`)
     }
@@ -170,11 +169,11 @@ export default function UserList() {
                 ...value,
                 "roleState": true,
                 "default": false,
-            }).then(res=>{
+            }).then(res => {
                 console.log(res.data)
-                setdataSource([...dataSource,{
+                setdataSource([...dataSource, {
                     ...res.data,
-                    role:roleList.filter(item=>item.id===value.roleId)[0]
+                    role: roleList.filter(item => item.id === value.roleId)[0]
                 }])
             })
         }).catch(err => {
@@ -182,24 +181,24 @@ export default function UserList() {
         })
     }
 
-    const updateFormOK = ()=>{
+    const updateFormOK = () => {
         updateForm.current.validateFields().then(value => {
             // console.log(value)
             setisUpdateVisible(false)
 
-            setdataSource(dataSource.map(item=>{
-                if(item.id===current.id){
+            setdataSource(dataSource.map(item => {
+                if (item.id === current.id) {
                     return {
                         ...item,
                         ...value,
-                        role:roleList.filter(data=>data.id===value.roleId)[0]
+                        role: roleList.filter(data => data.id === value.roleId)[0]
                     }
                 }
                 return item
             }))
             setisUpdateDisabled(!isUpdateDisabled)
 
-            axios.patch(`/users/${current.id}`,value)
+            axios.patch(`/users/${current.id}`, value)
         })
     }
 
