@@ -19,14 +19,13 @@ export default function UserList() {
 
     const { roleId, region, username } = JSON.parse(localStorage.getItem("token"))
 
-    const roleObj = {
-        "1": "superadmin",
-        "2": "admin",
-        "3": "editor"
-    }
-    
     useEffect(() => {
         axios.get("/users?_expand=role").then(res => {
+            const roleObj = {
+                "1": "superadmin",
+                "2": "admin",
+                "3": "editor"
+            }
             const list = res.data
             setdataSource(roleObj[roleId] === "superadmin" ? list : [
                 ...list.filter(item => item.username === username),

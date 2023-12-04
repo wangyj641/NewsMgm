@@ -6,14 +6,14 @@ export default function Audit() {
   const [dataSource, setdataSource] = useState([])
   const { roleId, region, username } = JSON.parse(localStorage.getItem("token"))
 
-  const roleObj = {
-    "1": "superadmin",
-    "2": "admin",
-    "3": "editor"
-  }
-
   useEffect(() => {
     axios.get("/news?auditState=1&_expand=category").then(res => {
+      const roleObj = {
+        "1": "superadmin",
+        "2": "admin",
+        "3": "editor"
+      }
+      
       const list = res.data
       setdataSource(roleObj[roleId] === "superadmin" ? list : [
         ...list.filter(item => item.author === username),

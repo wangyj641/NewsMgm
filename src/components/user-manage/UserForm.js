@@ -8,7 +8,7 @@ const UserForm = forwardRef((props,ref) => {
         setisDisabled(props.isUpdateDisabled)
     },[props.isUpdateDisabled])
 
-    const {roleId, region, username} = JSON.parse(localStorage.getItem("token"))
+    const {roleId, region} = JSON.parse(localStorage.getItem("token"))
 
     const roleObj = {
         "1": "superadmin",

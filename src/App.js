@@ -1,6 +1,11 @@
 import IndexRouter from './router/IndexRouter'
+import { Provider } from 'react-redux'
 import './App.css'
-function App(){
-  return <IndexRouter></IndexRouter>
+import store from './redux/store'
+
+function App() {
+  return <Provider store={store}>
+    <IndexRouter></IndexRouter>
+  </Provider>
 }
 export default App
