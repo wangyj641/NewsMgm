@@ -2,7 +2,6 @@ import React from 'react'
 import { Table } from 'antd'
 
 export default function NewsPublish(props) {
-    const { username } = JSON.parse(localStorage.getItem("token"))
 
     const columns = [
         {
