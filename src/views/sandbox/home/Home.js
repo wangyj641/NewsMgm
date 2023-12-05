@@ -1,47 +1,49 @@
 import React from 'react'
-import { Button } from 'antd';
 // import axios from 'axios'
+import { Card, Col, Row, List } from 'antd'
+
+const { Meta } = Card
+
 export default function Home() {
 
-    const ajax = ()=>{
-        //取数据  get
-        // axios.get("http://localhost:8000/posts/2").then(res=>{
-        //     console.log(res.data)
-        // })
+    const data = [
+        'Racing car sprays burning fuel into crowd.',
+        'Japanese princess to wed commoner.',
+        'Australian walks 100km after outback crash.',
+        'Man charged over missing wedding girl.',
+        'Los Angeles battles huge wildfires.',
+    ];
 
-        // 增  post
-        // axios.post("http://localhost:8000/posts",{
-        //     title:"33333",
-        //     author:"xiaoming"
-        // })
-
-        // 更新 put
-
-        // axios.put("http://localhost:8000/posts/1",{
-        //     title:"1111-修改"
-        // })
-
-        // 更新 patch
-        // axios.patch("http://localhost:8000/posts/1",{
-        //     title:"1111-修改-11111"
-        // }) 
-
-        // 删除  delete
-        // axios.delete("http://localhost:8000/posts/1")
-    
-        // _embed
-        // axios.get("http://localhost:8000/posts?_embed=comments").then(res=>{
-        //     console.log(res.data)
-        // })
-
-        // _expand
-        // axios.get("http://localhost:8000/comments?_expand=post").then(res=>{
-        //     console.log(res.data)
-        // })
-    }
     return (
-        <div>
-            <Button type="primary" onClick={ajax}>Button</Button>
-        </div>
+        <Row gutter={16}>
+            <Col span={8}>
+                <Card title="Frequently view" bordered={true}>
+                    <List
+                        dataSource={data}
+                        renderItem={(item) => (
+                            <List.Item>{item}</List.Item>
+                        )}
+                    />
+                </Card>
+            </Col>
+            <Col span={8}>
+                <Card title="Most favourite" bordered={true}>
+                    <List
+                        dataSource={data}
+                        renderItem={(item) => (
+                            <List.Item>{item}</List.Item>
+                        )}
+                    />
+                </Card>
+            </Col>
+            <Col span={8}>
+                <Card title="Card title" bordered={true}
+                    hoverable
+                    cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+                >
+                    <Meta title="Europe Street beat" description="www.instagram.com" />
+                </Card>
+            </Col>
+        </Row>
     )
 }
