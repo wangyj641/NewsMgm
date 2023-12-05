@@ -1,5 +1,4 @@
 export const CollapsedReducer = (prevState = { isCollapsed: false }, action) => {
-
     console.log(action)
     let { type } = action
 

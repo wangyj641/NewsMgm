@@ -13,9 +13,7 @@ const { Header } = Layout;
 function TopHeader(props) {
     console.log(props)
 
-    //const [collapsed, setCollapsed] = useState(false)
     const changeCollapsed = () => {
-        //setCollapsed(!collapsed)
         props.changeCollapsed()
     }
 
