@@ -16,6 +16,8 @@ import AuditList from '../../views/sandbox/audit-manage/AuditList'
 import axios from 'axios'
 import NewsPreview from '../../views/sandbox/news-manage/NewsPreview'
 import NewsUpdate from '../../views/sandbox/news-manage/NewsUpdate'
+import { Spin } from 'antd'
+import { connect } from 'react-redux'
 
 const LocalRouterMap = {
   "/home": Home,
@@ -34,7 +36,7 @@ const LocalRouterMap = {
   "/publish-manage/sunset": Sunset
 }
 
-export default function NewsRouter() {
+function NewsRouter(props) {
 
   const [BackRouteList, setBackRouteList] = useState([])
   useEffect(() => {
@@ -57,23 +59,38 @@ export default function NewsRouter() {
   }
 
   return (
-    <Switch>
-      {
-        BackRouteList.map(item => {
-          if (checkRoute(item) && checkUserPermission(item)) {
-            return <Route path={item.key} key={item.key} component={LocalRouterMap[item.key]} exact />
+    <Spin size="large" spinning={props.isLoading}>
+      <Switch>
+        {
+          BackRouteList.map(item => {
+            if (checkRoute(item) && checkUserPermission(item)) {
+              return <Route path={item.key} key={item.key} component={LocalRouterMap[item.key]} exact />
+            }
+            return null
           }
-          return null
+          )
         }
-        )
-      }
-
-
-      <Redirect from="/" to="/home" exact />
-      {
-        BackRouteList.length > 0 && <Route path="*" component={Nopermission} />
-      }
-
-    </Switch>
+        <Redirect from="/" to="/home" exact />
+        {
+          BackRouteList.length > 0 && <Route path="*" component={Nopermission} />
+        }
+      </Switch>
+    </Spin>
   )
 }
+
+const mapStateToProps = ({ LoadingReducer: { isLoading } }) => {
+  return {
+    isLoading
+  }
+}
+
+const mapDispatchToProps = {
+  changeCollapsed() {
+    return {
+      type: "change_collapsed"
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsRouter)
