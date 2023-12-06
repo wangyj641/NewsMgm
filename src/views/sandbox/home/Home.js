@@ -39,18 +39,19 @@ export default function Home() {
 
     useEffect(() => {
         axios.get('/news?publishState=2&_expand=category').then(res => {
-            //console.log(res.data)
+            console.log(res.data)
             renderBarView(_.groupBy(res.data, item => item.category.title))
             setAllList(res.data)
         })
 
         return () => {
+            console.log('exit this page')
             window.onresize = null
         }
     }, [])
 
     const renderBarView = (obj) => {
-        console.log(obj)
+        //console.log(obj)
         // 基于准备好的dom，初始化echarts实例
         var myChart = Echarts.init(barRef.current)
 
