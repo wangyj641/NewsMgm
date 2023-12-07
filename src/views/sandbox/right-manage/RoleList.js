@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Table, Button, Modal,Tree } from 'antd'
+import { Table, Button, Modal, Tree } from 'antd'
 import axios from 'axios'
 import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
 const { confirm } = Modal
@@ -18,19 +18,19 @@ export default function RoleList() {
             }
         },
         {
-            title: '角色名称',
+            title: 'Role Name',
             dataIndex: 'roleName'
         },
         {
-            title: "操作",
+            title: "Operation",
             render: (item) => {
                 return <div>
                     <Button danger shape="circle" icon={<DeleteOutlined />} onClick={() => confirmMethod(item)} />
-                    <Button type="primary" shape="circle" icon={<EditOutlined />} onClick={()=>{
+                    <Button type="primary" shape="circle" icon={<EditOutlined />} onClick={() => {
                         setisModalVisible(true)
                         setcurrentRights(item.rights)
                         setcurrentId(item.id)
-                    }}/>
+                    }} />
                 </div>
             }
         }
@@ -38,7 +38,7 @@ export default function RoleList() {
 
     const confirmMethod = (item) => {
         confirm({
-            title: '你确定要删除?',
+            title: 'Are you sure to delete it?',
             icon: <ExclamationCircleOutlined />,
             // content: 'Some descriptions',
             onOk() {
@@ -74,31 +74,31 @@ export default function RoleList() {
 
 
 
-    const handleOk = ()=>{
-        console.log(currentRights,currentId)
+    const handleOk = () => {
+        console.log(currentRights, currentId)
         setisModalVisible(false)
         //同步datasource
-        setdataSource(dataSource.map(item=>{
-            if(item.id===currentId){
+        setdataSource(dataSource.map(item => {
+            if (item.id === currentId) {
                 return {
                     ...item,
-                    rights:currentRights
+                    rights: currentRights
                 }
             }
             return item
         }))
         //patch
 
-        axios.patch(`/roles/${currentId}`,{
-            rights:currentRights
+        axios.patch(`/roles/${currentId}`, {
+            rights: currentRights
         })
     }
 
-    const handleCancel  =()=>{
+    const handleCancel = () => {
         setisModalVisible(false)
     }
 
-    const onCheck = (checkKeys)=>{
+    const onCheck = (checkKeys) => {
         // console.log(checkKeys)
         setcurrentRights(checkKeys.checked)
     }
@@ -107,14 +107,14 @@ export default function RoleList() {
             <Table dataSource={dataSource} columns={columns}
                 rowKey={(item) => item.id}></Table>
 
-            <Modal title="权限分配" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-            <Tree
-                checkable
-                checkedKeys = {currentRights}
-                onCheck={onCheck}
-                checkStrictly = {true}
-                treeData={rightList}
-            />
+            <Modal title="Right Assignment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                <Tree
+                    checkable
+                    checkedKeys={currentRights}
+                    onCheck={onCheck}
+                    checkStrictly={true}
+                    treeData={rightList}
+                />
 
             </Modal>
         </div>

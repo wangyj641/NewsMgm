@@ -50,7 +50,7 @@ export default function UserList() {
 
     const columns = [
         {
-            title: '区域',
+            title: 'Region',
             dataIndex: 'region',
             filters: [
                 ...regionList.map(item => ({
@@ -58,43 +58,43 @@ export default function UserList() {
                     value: item.value
                 })),
                 {
-                    text: "全球",
-                    value: "全球"
+                    text: "Global",
+                    value: "global"
                 }
 
             ],
 
             onFilter: (value, item) => {
-                if (value === "全球") {
+                if (value === "global") {
                     return item.region === ""
                 }
                 return item.region === value
             },
 
             render: (region) => {
-                return <b>{region === "" ? '全球' : region}</b>
+                return <b>{region === "" ? 'Global' : region}</b>
             }
         },
         {
-            title: '角色名称',
+            title: 'Role Name',
             dataIndex: 'role',
             render: (role) => {
                 return role?.roleName
             }
         },
         {
-            title: "用户名",
+            title: "User Name",
             dataIndex: 'username'
         },
         {
-            title: "用户状态",
+            title: "User State",
             dataIndex: 'roleState',
             render: (roleState, item) => {
                 return <Switch checked={roleState} disabled={item.default} onChange={() => handleChange(item)}></Switch>
             }
         },
         {
-            title: "操作",
+            title: "Operation",
             render: (item) => {
                 return <div>
                     <Button danger shape="circle" icon={<DeleteOutlined />} onClick={() => confirmMethod(item)} disabled={item.default} />
@@ -109,10 +109,8 @@ export default function UserList() {
         setTimeout(() => {
             setisUpdateVisible(true)
             if (item.roleId === 1) {
-                //禁用
                 setisUpdateDisabled(true)
             } else {
-                //取消禁用
                 setisUpdateDisabled(false)
             }
             updateForm.current.setFieldsValue(item)
@@ -133,7 +131,7 @@ export default function UserList() {
 
     const confirmMethod = (item) => {
         confirm({
-            title: '你确定要删除?',
+            title: 'Are you sure to delete it?',
             icon: <ExclamationCircleOutlined />,
             // content: 'Some descriptions',
             onOk() {
@@ -149,10 +147,7 @@ export default function UserList() {
     //删除
     const deleteMethod = (item) => {
         // console.log(item)
-        // 当前页面同步状态 + 后端同步
-
         setdataSource(dataSource.filter(data => data.id !== item.id))
-
         axios.delete(`/users/${item.id}`)
     }
 
@@ -205,7 +200,7 @@ export default function UserList() {
         <div>
             <Button type="primary" onClick={() => {
                 setisAddVisible(true)
-            }}>添加用户</Button>
+            }}>Add User</Button>
             <Table dataSource={dataSource} columns={columns}
                 pagination={{
                     pageSize: 5
@@ -215,9 +210,9 @@ export default function UserList() {
 
             <Modal
                 visible={isAddVisible}
-                title="添加用户"
-                okText="确定"
-                cancelText="取消"
+                title="Add User"
+                okText="OK"
+                cancelText="Cancel"
                 onCancel={() => {
                     setisAddVisible(false)
                 }}
@@ -228,9 +223,9 @@ export default function UserList() {
 
             <Modal
                 visible={isUpdateVisible}
-                title="更新用户"
-                okText="更新"
-                cancelText="取消"
+                title="Update User"
+                okText="Update"
+                cancelText="Cancel"
                 onCancel={() => {
                     setisUpdateVisible(false)
                     setisUpdateDisabled(!isUpdateDisabled)

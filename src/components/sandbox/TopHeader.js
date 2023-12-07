@@ -39,7 +39,7 @@ function TopHeader(props) {
             }
 
             <div style={{ float: "right" }}>
-                <span>欢迎<span style={{ color: "#1890ff" }}>{username}</span>回来</span>
+                <span>Welcome <span style={{ color: "#1890ff" }}>{username}</span> back </span>
                 <Dropdown overlay={menu}>
                     <Avatar size="large" icon={<UserOutlined />} />
                 </Dropdown>

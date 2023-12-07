@@ -11,14 +11,14 @@ import './NewsSandBox.css'
 import { Layout } from 'antd'
 import NewsRouter from '../../components/sandbox/NewsRouter'
 
-const {Content} = Layout
+const { Content } = Layout
 
 export default function NewsSandBox() {
     NProgress.start();
-    useEffect(()=>{
+    useEffect(() => {
         NProgress.done()
     })
-    
+
     return (
         <Layout>
             <SideMenu></SideMenu>
@@ -30,10 +30,10 @@ export default function NewsSandBox() {
                         margin: '24px 16px',
                         padding: 24,
                         minHeight: 280,
-                        overflow:"auto"
+                        overflow: "auto"
                     }}
                 >
-                <NewsRouter></NewsRouter>
+                    <NewsRouter></NewsRouter>
                 </Content>
             </Layout>
         </Layout>

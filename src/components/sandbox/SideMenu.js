@@ -11,43 +11,6 @@ import { connect } from 'react-redux'
 const { Sider } = Layout;
 const { SubMenu } = Menu
 
-//模拟数组结构
-// const  menuList = [
-//   {
-//     key:"/home",
-//     title:"首页",
-//     icon:<UserOutlined />
-//   },
-//   {
-//     key:"/user-manage",
-//     title:"用户管理",
-//     icon:<UserOutlined />,
-//     children:[
-//       {
-//         key:"/user-manage/list",
-//         title:"用户列表",
-//         icon:<UserOutlined />
-//       }
-//     ]
-//   },
-//   {
-//     key:"/right-manage",
-//     title:"权限管理",
-//     icon:<UserOutlined />,
-//     children:[
-//       {
-//         key:"/right-manage/role/list",
-//         title:"角色列表",
-//         icon:<UserOutlined />
-//       },
-//       {
-//         key:"/right-manage/right/list",
-//         title:"权限列表",
-//         icon:<UserOutlined />
-//       }
-//     ]
-//   }
-// ]
 const iconList = {
   "/home": <UserOutlined />,
   "/user-manage": <UserOutlined />,
@@ -96,7 +59,7 @@ function SideMenu(props) {
   return (
     <Sider trigger={null} collapsible collapsed={props.isCollapsed} >
       <div style={{ display: "flex", height: "100%", "flexDirection": "column" }}>
-        <div className="logo" >全球新闻发布管理系统</div>
+        <div className="logo" >World News Management System</div>
         <div style={{ flex: 1, "overflow": "auto" }}>
           <Menu theme="dark" mode="inline" selectedKeys={selectKeys} className="aaaaaaa" defaultOpenKeys={openKeys}>
             {renderMenu(meun)}

@@ -10,24 +10,24 @@ export default function Login(props) {
     const onFinish = (values) => {
         console.log(values)
         axios.get(`/users?username=${values.username}&password=${values.password}&rolestate=true&_expand=role`).then
-        (res=>{
-            console.log(res.data)
-            if(res.data.length===0){
-                message.error("Wrong username or password")
-            }else{
-                localStorage.setItem("token", JSON.stringify(res.data[0]))
-                console.log("-------------" + JSON.stringify(res.data[0]))
-                props.history.push("/")
-            }
-        })
+            (res => {
+                console.log(res.data)
+                if (res.data.length === 0) {
+                    message.error("Wrong username or password")
+                } else {
+                    localStorage.setItem("token", JSON.stringify(res.data[0]))
+                    console.log("-------------" + JSON.stringify(res.data[0]))
+                    props.history.push("/")
+                }
+            })
     }
     return (
         <div style={{ background: 'rgb(35, 39, 65)', height: "100%", overflow: 'hidden' }}>
 
-            <Particles height={document.documentElement.clientHeight}/>
+            <Particles height={document.documentElement.clientHeight} />
 
             <div className="formContainer">
-                <div className="logintitle">全球新闻发布管理系统</div>
+                <div className="logintitle">World News Management System</div>
                 <Form
                     name="normal_login"
                     className="login-form"
@@ -51,8 +51,8 @@ export default function Login(props) {
                     </Form.Item>
                     <Form.Item>
                         <Button type="primary" htmlType="submit" className="login-form-button">
-                            登录
-                     </Button>
+                            Login
+                        </Button>
                     </Form.Item>
                 </Form>
             </div>

@@ -14,7 +14,7 @@
       "password": "123",
       "roleState": true,
       "default": false,
-      "region": "亚洲",
+      "region": "asia",
       "roleId": 2,
       "id": 2
     },
@@ -23,25 +23,16 @@
       "password": "123",
       "roleState": true,
       "default": false,
-      "region": "南极洲",
+      "region": "europe",
       "roleId": 2,
       "id": 3
-    },
-    {
-      "username": "Steven",
-      "password": "123",
-      "roleState": true,
-      "default": false,
-      "region": "",
-      "roleId": 1,
-      "id": 4
     },
     {
       "username": "Kelly",
       "password": "123",
       "roleState": true,
       "default": false,
-      "region": "南极洲",
+      "region": "africa",
       "roleId": 3,
       "id": 5
     },
@@ -50,7 +41,7 @@
       "password": "123",
       "roleState": true,
       "default": false,
-      "region": "南极洲",
+      "region": "austria",
       "roleId": 3,
       "id": 6
     },
@@ -59,7 +50,7 @@
       "password": "123",
       "roleState": true,
       "default": false,
-      "region": "亚洲",
+      "region": "north america",
       "roleId": 3,
       "id": 7
     },
@@ -68,60 +59,15 @@
       "password": "123",
       "roleState": true,
       "default": false,
-      "region": "亚洲",
+      "region": "south america",
       "roleId": 3,
       "id": 8
-    },
-    {
-      "username": "wang",
-      "password": "123",
-      "region": "亚洲",
-      "roleId": 3,
-      "roleState": true,
-      "default": false,
-      "id": 9
-    },
-    {
-      "username": "wang2",
-      "password": "123",
-      "region": "南极洲",
-      "roleId": 2,
-      "roleState": true,
-      "default": false,
-      "id": 10
-    },
-    {
-      "username": "wang3",
-      "password": "123",
-      "region": "南极洲",
-      "roleId": 3,
-      "roleState": true,
-      "default": false,
-      "id": 11
-    },
-    {
-      "username": "wang4",
-      "password": "123",
-      "region": "欧洲",
-      "roleId": 2,
-      "roleState": true,
-      "default": false,
-      "id": 12
-    },
-    {
-      "username": "wang5",
-      "password": "123",
-      "region": "欧洲",
-      "roleId": 3,
-      "roleState": true,
-      "default": false,
-      "id": 13
     }
   ],
   "roles": [
     {
       "id": 1,
-      "roleName": "超级管理员",
+      "roleName": "Super Admin",
       "roleType": 1,
       "rights": [
         "/user-manage/add",
@@ -155,7 +101,7 @@
     },
     {
       "id": 2,
-      "roleName": "区域管理员",
+      "roleName": "Area Admin",
       "roleType": 2,
       "rights": [
         "/home",
@@ -182,7 +128,7 @@
     },
     {
       "id": 3,
-      "roleName": "区域编辑",
+      "roleName": "Area Editor",
       "roleType": 3,
       "rights": [
         "/home",
@@ -204,28 +150,28 @@
   "children": [
     {
       "id": 3,
-      "title": "添加用户",
+      "title": "Add User",
       "rightId": 2,
       "key": "/user-manage/add",
       "grade": 2
     },
     {
       "id": 4,
-      "title": "删除用户",
+      "title": "Delete User",
       "rightId": 2,
       "key": "/user-manage/delete",
       "grade": 2
     },
     {
       "id": 5,
-      "title": "修改用户",
+      "title": "Update User",
       "rightId": 2,
       "key": "/user-manage/update",
       "grade": 2
     },
     {
       "id": 6,
-      "title": "用户列表",
+      "title": "User List",
       "rightId": 2,
       "key": "/user-manage/list",
       "pagepermisson": 1,
@@ -233,7 +179,7 @@
     },
     {
       "id": 8,
-      "title": "角色列表",
+      "title": "Role List",
       "rightId": 7,
       "key": "/right-manage/role/list",
       "pagepermisson": 1,
@@ -241,7 +187,7 @@
     },
     {
       "id": 9,
-      "title": "权限列表",
+      "title": "Right List",
       "rightId": 7,
       "key": "/right-manage/right/list",
       "pagepermisson": 1,
@@ -249,42 +195,42 @@
     },
     {
       "id": 10,
-      "title": "修改角色",
+      "title": "Update Role",
       "rightId": 7,
       "key": "/right-manage/role/update",
       "grade": 2
     },
     {
       "id": 11,
-      "title": "删除角色",
+      "title": "Delete Role",
       "rightId": 7,
       "key": "/right-manage/role/delete",
       "grade": 2
     },
     {
       "id": 12,
-      "title": "修改权限",
+      "title": "Update Right",
       "rightId": 7,
       "key": "/right-manage/right/update",
       "grade": 2
     },
     {
       "id": 13,
-      "title": "删除权限",
+      "title": "Update Right",
       "rightId": 7,
       "key": "/right-manage/right/delete",
       "grade": 2
     },
     {
       "id": 15,
-      "title": "新闻列表",
+      "title": "News List",
       "rightId": 14,
       "key": "/news-manage/list",
       "grade": 2
     },
     {
       "id": 16,
-      "title": "撰写新闻",
+      "title": "Add News",
       "rightId": 14,
       "key": "/news-manage/add",
       "grade": 2,
@@ -292,7 +238,7 @@
     },
     {
       "id": 17,
-      "title": "新闻更新",
+      "title": "Update News",
       "rightId": 14,
       "key": "/news-manage/update/:id",
       "grade": 2,
@@ -300,7 +246,7 @@
     },
     {
       "id": 18,
-      "title": "新闻预览",
+      "title": "Preview News",
       "rightId": 14,
       "key": "/news-manage/preview/:id",
       "grade": 2,
@@ -308,7 +254,7 @@
     },
     {
       "id": 19,
-      "title": "草稿箱",
+      "title": "Draft",
       "rightId": 14,
       "key": "/news-manage/draft",
       "pagepermisson": 1,
@@ -316,7 +262,7 @@
     },
     {
       "id": 20,
-      "title": "新闻分类",
+      "title": "News Category",
       "rightId": 14,
       "key": "/news-manage/category",
       "pagepermisson": 1,
@@ -324,7 +270,7 @@
     },
     {
       "id": 22,
-      "title": "审核新闻",
+      "title": "Audit News",
       "rightId": 21,
       "key": "/audit-manage/audit",
       "pagepermisson": 1,
@@ -332,7 +278,7 @@
     },
     {
       "id": 23,
-      "title": "审核列表",
+      "title": "Audit List",
       "rightId": 21,
       "key": "/audit-manage/list",
       "pagepermisson": 1,
@@ -340,7 +286,7 @@
     },
     {
       "id": 25,
-      "title": "待发布",
+      "title": "To be Published",
       "rightId": 24,
       "key": "/publish-manage/unpublished",
       "pagepermisson": 1,
@@ -348,7 +294,7 @@
     },
     {
       "id": 26,
-      "title": "已发布",
+      "title": "Published",
       "rightId": 24,
       "key": "/publish-manage/published",
       "pagepermisson": 1,
@@ -356,7 +302,7 @@
     },
     {
       "id": 27,
-      "title": "已下线",
+      "title": "Sunset",
       "rightId": 24,
       "key": "/publish-manage/sunset",
       "pagepermisson": 1,
@@ -366,42 +312,42 @@
   "rights": [
     {
       "id": 1,
-      "title": "首页",
+      "title": "Home",
       "key": "/home",
       "pagepermisson": 1,
       "grade": 1
     },
     {
       "id": 2,
-      "title": "用户管理",
+      "title": "User Management",
       "key": "/user-manage",
       "pagepermisson": 1,
       "grade": 1
     },
     {
       "id": 7,
-      "title": "权限管理",
+      "title": "Right Management",
       "key": "/right-manage",
       "pagepermisson": 1,
       "grade": 1
     },
     {
       "id": 14,
-      "title": "新闻管理",
+      "title": "News Management",
       "key": "/news-manage",
       "pagepermisson": 1,
       "grade": 1
     },
     {
       "id": 21,
-      "title": "审核管理",
+      "title": "Audit Management",
       "key": "/audit-manage",
       "pagepermisson": 1,
       "grade": 1
     },
     {
       "id": 24,
-      "title": "发布管理",
+      "title": "Publish Management",
       "key": "/publish-manage",
       "pagepermisson": 1,
       "grade": 1
@@ -410,162 +356,61 @@
   "categories": [
     {
       "id": 2,
-      "title": "环球经济",
-      "value": "环球经济"
+      "title": "Global Economy",
+      "value": "global economy"
     },
     {
       "id": 3,
-      "title": "科学技术",
-      "value": "科学技术"
+      "title": "Science",
+      "value": "science"
     },
     {
       "id": 4,
-      "title": "军事世界",
-      "value": "军事世界"
+      "title": "Military",
+      "value": "military"
     },
     {
       "id": 5,
-      "title": "世界体育",
-      "value": "世界体育"
+      "title": "Sports",
+      "value": "sports"
     },
     {
       "id": 6,
-      "title": "生活理财",
-      "value": "生活理财"
+      "title": "Finance",
+      "value": "finance"
     }
   ],
   "regions": [
     {
       "id": 1,
-      "title": "亚洲",
-      "value": "亚洲"
+      "title": "Asia",
+      "value": "asia"
     },
     {
       "id": 2,
-      "title": "欧洲",
-      "value": "欧洲"
+      "title": "Europe",
+      "value": "europe"
     },
     {
       "id": 3,
-      "title": "北美洲",
-      "value": "北美洲"
+      "title": "North America",
+      "value": "north america"
     },
     {
       "id": 4,
-      "title": "南美洲",
-      "value": "南美洲"
+      "title": "South America",
+      "value": "south america"
     },
     {
       "id": 5,
-      "title": "非洲",
-      "value": "非洲"
+      "title": "Africa",
+      "value": "africa"
     },
     {
       "id": 6,
-      "title": "大洋洲",
-      "value": "大洋洲"
-    },
-    {
-      "id": 7,
-      "title": "南极洲",
-      "value": "南极洲"
+      "title": "Austria",
+      "value": "austria"
     }
   ],
-  "news": [
-    {
-      "title": "司马海味-111",
-      "categoryId": 2,
-      "content": "<p>dwda</p>\n",
-      "region": "亚洲",
-      "author": "司马海味",
-      "roleId": 3,
-      "auditState": 3,
-      "publishState": 0,
-      "createTime": 1617518470380,
-      "star": 0,
-      "view": 0,
-      "id": 15
-    },
-    {
-      "title": "西门11111",
-      "categoryId": 2,
-      "content": "<p>dwadw111</p>\n",
-      "region": "南极洲",
-      "author": "西门吹灯",
-      "roleId": 3,
-      "auditState": 2,
-      "publishState": 1,
-      "createTime": 1617518536111,
-      "star": 0,
-      "view": 0,
-      "id": 16
-    },
-    {
-      "title": "jjjuu",
-      "categoryId": 5,
-      "content": "<p>hhhhhh</p>\n",
-      "auditState": 0,
-      "publishState": 0,
-      "createTime": 1701499526109,
-      "star": 0,
-      "view": 0,
-      "id": 35
-    },
-    {
-      "title": "dddddjjjj",
-      "categoryId": 6,
-      "content": "<p>fffffffffffkkkkkk</p>\n",
-      "auditState": 0,
-      "publishState": 0,
-      "createTime": 1701515081835,
-      "star": 0,
-      "view": 0,
-      "id": 37
-    },
-    {
-      "title": "gggg",
-      "categoryId": 3,
-      "content": "<p>llllhhh</p>\n",
-      "region": "Global",
-      "author": "admin",
-      "roleId": 1,
-      "auditState": 2,
-      "publishState": 2,
-      "createTime": 1701656924632,
-      "star": 12,
-      "view": 13,
-      "id": 38,
-      "publishTime": 1701767056979
-    },
-    {
-      "title": "ggggggg",
-      "categoryId": 3,
-      "content": "<p>hhhhhhh</p>\n",
-      "region": "Global",
-      "author": "admin",
-      "roleId": 1,
-      "auditState": 2,
-      "publishState": 2,
-      "createTime": 1701767015187,
-      "star": 3,
-      "view": 2,
-      "id": 39,
-      "publishTime": 1701767029443
-    },
-    {
-      "title": "gggggggggggggggjjjj",
-      "categoryId": 4,
-      "content": "<p>kkkkk</p>\n",
-      "region": "Global",
-      "author": "admin",
-      "roleId": 1,
-      "auditState": 2,
-      "publishState": 2,
-      "createTime": 1701787261894,
-      "star": 0,
-      "view": 0,
-      "id": 40,
-      "publishTime": 1701787274974
-    }
-  ]
+  "news": []
 }
