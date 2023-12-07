@@ -8,60 +8,6 @@
       "default": true,
       "region": "",
       "roleId": 1
-    },
-    {
-      "username": "Mike",
-      "password": "123",
-      "roleState": true,
-      "default": false,
-      "region": "asia",
-      "roleId": 2,
-      "id": 2
-    },
-    {
-      "username": "Jimmy",
-      "password": "123",
-      "roleState": true,
-      "default": false,
-      "region": "europe",
-      "roleId": 2,
-      "id": 3
-    },
-    {
-      "username": "Kelly",
-      "password": "123",
-      "roleState": true,
-      "default": false,
-      "region": "africa",
-      "roleId": 3,
-      "id": 5
-    },
-    {
-      "username": "Susan",
-      "password": "123",
-      "roleState": true,
-      "default": false,
-      "region": "austria",
-      "roleId": 3,
-      "id": 6
-    },
-    {
-      "username": "Cathy",
-      "password": "123",
-      "roleState": true,
-      "default": false,
-      "region": "north america",
-      "roleId": 3,
-      "id": 7
-    },
-    {
-      "username": "Peter",
-      "password": "123",
-      "roleState": true,
-      "default": false,
-      "region": "south america",
-      "roleId": 3,
-      "id": 8
     }
   ],
   "roles": [

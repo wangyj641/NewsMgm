@@ -28,7 +28,7 @@ function TopHeader(props) {
                 localStorage.removeItem("token")
                 // console.log(props.history)
                 props.history.replace("/login")
-            }}>退出</Menu.Item>
+            }}>Exit</Menu.Item>
         </Menu>
     );
 
