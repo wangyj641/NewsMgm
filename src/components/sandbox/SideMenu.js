@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Layout, Menu } from 'antd';
 import './index.css'
 import { withRouter } from 'react-router-dom'
-import {
-  UserOutlined
-} from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 import axios from 'axios'
 import { connect } from 'react-redux'
 

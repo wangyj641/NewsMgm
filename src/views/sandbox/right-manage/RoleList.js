@@ -3,6 +3,7 @@ import { Table, Button, Modal, Tree } from 'antd'
 import axios from 'axios'
 import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
 const { confirm } = Modal
+
 export default function RoleList() {
     const [dataSource, setdataSource] = useState([])
     const [rightList, setRightList] = useState([])
@@ -49,9 +50,8 @@ export default function RoleList() {
                 //   console.log('Cancel');
             },
         });
-
     }
-    //删除
+
     const deleteMethod = (item) => {
         // console.log(item)
         setdataSource(dataSource.filter(data => data.id !== item.id))
@@ -72,12 +72,9 @@ export default function RoleList() {
         })
     }, [])
 
-
-
     const handleOk = () => {
         console.log(currentRights, currentId)
         setisModalVisible(false)
-        //同步datasource
         setdataSource(dataSource.map(item => {
             if (item.id === currentId) {
                 return {
@@ -115,7 +112,6 @@ export default function RoleList() {
                     checkStrictly={true}
                     treeData={rightList}
                 />
-
             </Modal>
         </div>
     )

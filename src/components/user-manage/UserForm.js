@@ -1,49 +1,50 @@
-import React, { forwardRef,useEffect,useState } from 'react'
-import {Form,Input,Select} from 'antd'
-const {Option}  = Select
-const UserForm = forwardRef((props,ref) => {
-    const [isDisabled, setisDisabled] = useState(false)
-    
-    useEffect(()=>{
-        setisDisabled(props.isUpdateDisabled)
-    },[props.isUpdateDisabled])
+import React, { forwardRef, useEffect, useState } from 'react'
+import { Form, Input, Select } from 'antd'
+const { Option } = Select
 
-    const {roleId, region} = JSON.parse(localStorage.getItem("token"))
+const UserForm = forwardRef((props, ref) => {
+    const [isDisabled, setisDisabled] = useState(false)
+
+    useEffect(() => {
+        setisDisabled(props.isUpdateDisabled)
+    }, [props.isUpdateDisabled])
+
+    const { roleId, region } = JSON.parse(localStorage.getItem("token"))
 
     const roleObj = {
         "1": "superadmin",
         "2": "admin",
         "3": "editor"
     }
-    
-    const checkRegionDisabled = (item)=>{
+
+    const checkRegionDisabled = (item) => {
         if (props.isUpdate) {
-            if (roleObj[roleId]==="superadmin"){
+            if (roleObj[roleId] === "superadmin") {
                 return false
             } else {
                 return true
             }
-        }else {
-            if (roleObj[roleId]==="superadmin"){
+        } else {
+            if (roleObj[roleId] === "superadmin") {
                 return false
             } else {
-                return item.value!==region
+                return item.value !== region
             }
         }
     }
 
-    const checkRoleDisabled = (item)=>{
+    const checkRoleDisabled = (item) => {
         if (props.isUpdate) {
-            if (roleObj[roleId]==="superadmin"){
+            if (roleObj[roleId] === "superadmin") {
                 return false
             } else {
                 return true
             }
-        }else {
-            if (roleObj[roleId]==="superadmin"){
+        } else {
+            if (roleObj[roleId] === "superadmin") {
                 return false
             } else {
-                return roleObj[item.id]!=="editor"
+                return roleObj[item.id] !== "editor"
             }
         }
     }
@@ -55,22 +56,22 @@ const UserForm = forwardRef((props,ref) => {
         >
             <Form.Item
                 name="username"
-                label="用户名"
+                label="User Name"
                 rules={[{ required: true, message: 'Please input the title of collection!' }]}
             >
                 <Input />
             </Form.Item>
             <Form.Item
                 name="password"
-                label="密码"
+                label="Password"
                 rules={[{ required: true, message: 'Please input the title of collection!' }]}
             >
                 <Input />
             </Form.Item>
             <Form.Item
                 name="region"
-                label="区域"
-                rules={isDisabled?[]:[{ required: true, message: 'Please input the title of collection!' }]}
+                label="Region"
+                rules={isDisabled ? [] : [{ required: true, message: 'Please input the title of collection!' }]}
             >
                 <Select disabled={isDisabled}>
                     {
@@ -82,17 +83,17 @@ const UserForm = forwardRef((props,ref) => {
             </Form.Item>
             <Form.Item
                 name="roleId"
-                label="角色"
+                label="Role"
                 rules={[{ required: true, message: 'Please input the title of collection!' }]}
             >
-                <Select onChange={(value)=>{
+                <Select onChange={(value) => {
                     // console.log(value)
-                    if(value === 1){
+                    if (value === 1) {
                         setisDisabled(true)
                         ref.current.setFieldsValue({
-                            region:""
+                            region: ""
                         })
-                    }else{
+                    } else {
                         setisDisabled(false)
                     }
                 }}>
