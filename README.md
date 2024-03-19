@@ -1,5 +1,8 @@
 # News Management System
+
 A web application is to manage news, based on React.js  
+
+Developed with React.js, antd, testing-library.
 
 ## How to run
 ### start the app
