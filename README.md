@@ -4,6 +4,10 @@ A web application is to manage news, based on React.js
 
 Developed with React.js, antd, testing-library.
 
+![screenshot]
+
+[screenshot]: public/screenshot.jpg
+
 ## How to run
 ### start the app
 json-server --watch .\db.json --port 5000  
