@@ -1,6 +1,6 @@
-# News Management System
+# NewsMgm
 
-A web application is to manage news.
+A news management system
 
 Developed with React.js, ant-design, testing-library.
 
